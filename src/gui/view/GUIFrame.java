@@ -20,6 +20,11 @@ public class GUIFrame extends JFrame
 	
 	private void setupFrame()
 	{
+		this.setContentPane(appPanel);
+		this.setTitle("My GUI App!");
+		this.setSize(1000, 500);
+		this.setResizable(false);
+		this.setVisible(true);
 		
 	}
 	
