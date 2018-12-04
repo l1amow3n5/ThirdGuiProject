@@ -5,6 +5,8 @@ import gui.controller.GUIController;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.SystemColor;
 
 public class GUIPanel extends JPanel
 {
@@ -18,8 +20,13 @@ public class GUIPanel extends JPanel
 		
 		this.appController = appController;
 		
-		this.textLabel = new JLabel("This is a color app!");
-		this.colorButton = new JButton("Click here to change color");
+		this.textLabel = new JLabel("What is a spring layout");
+		textLabel.setForeground(Color.YELLOW);
+		textLabel.setBackground(Color.CYAN);
+		textLabel.setFont(new Font("Microsoft Sans Serif", Font.BOLD | Font.ITALIC, 24));
+		this.colorButton = new JButton("I did it!!!!!");
+		colorButton.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
+		colorButton.setBackground(SystemColor.desktop);
 		
 		setupPanel();
 		setupLayout();
@@ -29,7 +36,17 @@ public class GUIPanel extends JPanel
 	
 	private void setupPanel()
 	{
-		this.setBackground(Color.CYAN);
+		this.setBackground(Color.MAGENTA);
+		SpringLayout springLayout = new SpringLayout();
+		springLayout.putConstraint(SpringLayout.NORTH, colorButton, 246, SpringLayout.SOUTH, textLabel);
+		springLayout.putConstraint(SpringLayout.WEST, colorButton, 0, SpringLayout.WEST, textLabel);
+		springLayout.putConstraint(SpringLayout.SOUTH, colorButton, 419, SpringLayout.SOUTH, textLabel);
+		springLayout.putConstraint(SpringLayout.EAST, colorButton, 598, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.WEST, textLabel, 314, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, textLabel, -408, SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.NORTH, textLabel, 10, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, textLabel, 51, SpringLayout.NORTH, this);
+		setLayout(springLayout);
 		this.add(textLabel);
 		this.add(colorButton);
 	}
@@ -60,5 +77,4 @@ public class GUIPanel extends JPanel
 		this.setBackground(new Color(red,green,blue));
 		textLabel.setText("Red: " + red + " Green: " + green + " Blue: " + blue);
 	}
-
 }
